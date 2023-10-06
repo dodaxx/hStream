@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import VideoServices from '@/services/video';
 
 const video = ref();
@@ -23,6 +23,11 @@ const video = ref();
 
 // });
 
+const getVideo = async () => {
+  const data = await VideoServices.getVideo();
+  console.log(data);
+}
+
 const handleSearchFile = async () => {
   const formData = new FormData();
   formData.append('video', video.value.files[0]);
@@ -30,6 +35,10 @@ const handleSearchFile = async () => {
   const res = await VideoServices.postVideo(formData);
   console.log(res);
 }
+
+onMounted(() => {
+  getVideo();
+})
 
 </script>
 

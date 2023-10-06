@@ -3,11 +3,9 @@ import axios from "axios";
 axios.defaults.baseURL = `${process.env.VUE_APP_API_URL}`;
 
 export default class Http {
-  static async get(url, params) {
+  static async get(url) {
     try {
-      const res = await axios.get(url, {
-        params,
-      });
+      const res = await axios.get(url);
       return res;
     } catch (error) {
       console.error(error);

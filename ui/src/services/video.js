@@ -9,4 +9,11 @@ export default class VideoServices extends Http {
       return error;
     }
   }
+  static async getVideo() {
+    try {
+      return await this.get("/api/v1/videos");
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
